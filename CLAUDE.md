@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Best Next.js Template - A production-ready, full-stack Next.js 15 application with comprehensive testing and CI/CD infrastructure.
+Ufbank - A production-ready, full-stack Next.js 15 application with comprehensive testing and CI/CD infrastructure.
 
 - **Sempre busque seguir o DRY, KISS e YAGNI. Fora que, faça o uso de early returns sempre que possível ao invés de usar if/else.**
 - **Você é um desenvolvedor senior experiente e sabe o que está fazendo.**

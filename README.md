@@ -1,4 +1,4 @@
-# 🚀 Best Next.js Template
+# 🚀 Ufbank 
 
 Um template **Next.js Full Stack** moderno, escalável e organizado para desenvolvimento de aplicações enterprise-grade. Construído com as melhores práticas e tecnologias mais atuais do ecossistema React/Next.js.
 
@@ -43,7 +43,7 @@ Um template **Next.js Full Stack** moderno, escalável e organizado para desenvo
 ### 1. Clone e instale dependências
 ```bash
 git clone <repository-url>
-cd best-nextjs-template
+cd MATC84--Project-Ufbank
 npm install
 ```
 
@@ -396,55 +396,3 @@ git push origin feature/nova-funcionalidade
 ## 📄 Licença
 
 MIT License - veja [LICENSE](LICENSE) para detalhes.
-
-## 🔧 Correções Aplicadas ✅
-
-### Better Auth + Drizzle Integration
-- ✅ **RESOLVIDO**: Erro "The model 'user' was not found in the schema"
-- ✅ **IMPLEMENTADO**: Tabelas renomeadas para convenções Better Auth (`user`, `session`, `account`, `verification`)
-- ✅ **LIMPO**: Removidos aliases legados para código mais profissional
-- ✅ **CONFIGURADO**: Adaptador Drizzle com schema explícito e correto
-
-### Testes E2E
-- ✅ **CORRIGIDO**: Timeouts apropriados para validações React Hook Form
-- ✅ **MELHORADO**: Seletores de elementos mais robustos
-- ✅ **CONFIGURADO**: Modo de validação `onSubmit` com `reValidateMode: 'onChange'`
-- ✅ **AJUSTADO**: Textos esperados nos testes corrigidos
-- ✅ **RESOLVIDO**: Erro "trusted origin is invalid" no Better Auth
-- ✅ **OTIMIZADO**: Configuração robusta de variáveis de ambiente com fallbacks
-- ✅ **IMPLEMENTADO**: Usuário E2E dedicado (`e2e-test@example.com`)
-- ✅ **SIMPLIFICADO**: Testes limpos sem complexidade desnecessária
-
-### TypeScript & Build
-- ✅ **RESOLVIDO**: Erro de build com arquivos de teste incluídos
-- ✅ **CONFIGURADO**: `tsconfig.json` otimizado para excluir testes do build
-- ✅ **CRIADO**: `tsconfig.test.json` separado para configurações de teste
-- ✅ **CORRIGIDO**: Referências `imageUrl` → `image` em todo o código
-- ✅ **VALIDADO**: Linting, typecheck e build passando 100%
-
-### CI/CD & Produção
-- ✅ **GARANTIDO**: Pipeline CI/CD completo funcionando
-- ✅ **OTIMIZADO**: Build production-ready sem warnings críticos
-- ✅ **TESTADO**: Todos os comandos (`lint`, `typecheck`, `test`, `build`) passando
-- ✅ **DOCUMENTADO**: Scripts de setup automático e manual
-
-### Scripts & Utilitários
-- ✅ **RESOLVIDO**: Erro "tsx: not found" no seed script
-- ✅ **CRIADO**: Script JavaScript alternativo (`seed:test-user:js`)
-- ✅ **MELHORADO**: Mensagens de erro informativas e claras
-- ✅ **DOCUMENTADO**: README completo para scripts em `/scripts/README.md`
-- ✅ **ROBUSTO**: Tratamento de erros para conexão DB e tabelas inexistentes
-
-## 🙏 Agradecimentos
-
-Este template foi construído com base nas melhores práticas da comunidade e inspirado por:
-- [T3 Stack](https://create.t3.gg/)
-- [Next.js Examples](https://github.com/vercel/next.js/tree/canary/examples)
-- [Shadcn/UI](https://ui.shadcn.com/)
-- [TRPC Examples](https://github.com/trpc/examples-next-app-dir)
-
----
-
-**Desenvolvido com ❤️ para a comunidade dev brasileira**
-
-Para suporte ou dúvidas, abra uma [issue](https://github.com/your-repo/issues) ou entre em contato.

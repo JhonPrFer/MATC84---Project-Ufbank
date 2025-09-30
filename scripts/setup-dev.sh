@@ -2,7 +2,7 @@
 
 # Setup script for development environment
 
-echo "🚀 Setting up Best Next.js Template development environment..."
+echo "🚀 Setting up Ufbank development environment..."
 
 # Check if .env exists
 if [ ! -f .env ]; then
