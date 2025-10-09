@@ -1,13 +1,6 @@
 import {
   Navbar,
   HeroSection,
-  PartnersSection,
-  BenefitsSection,
-  HowItWorksSection,
-  PricingSection,
-  TestimonialsSection,
-  FAQSection,
-  CTASection,
   Footer,
 } from '@/components/landing'
 
@@ -17,13 +10,7 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        <PartnersSection />
-        <BenefitsSection />
-        <HowItWorksSection />
-        <PricingSection />
-        <TestimonialsSection />
-        <FAQSection />
-        <CTASection />
+
       </main>
       <Footer />
     </div>
