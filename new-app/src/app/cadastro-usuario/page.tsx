@@ -1,10 +1,11 @@
-import { CustomPage as Page } from "@/components/joao/page/page";
-import UserForm from "@/components/joao/UserForm";
+import UserRegistrationForm from '@/components/organisms/UserRegistrationForm';
 
-export default function register() {
+export default function CadastroUsuarioPage() {
   return (
-    <Page title="Cadastrar Usuário">
-      <UserForm />
-    </Page>
+    <main className="min-h-screen bg-gray-100 py-8">
+      <div className="container mx-auto px-4">
+        <UserRegistrationForm />
+      </div>
+    </main>
   );
 }
