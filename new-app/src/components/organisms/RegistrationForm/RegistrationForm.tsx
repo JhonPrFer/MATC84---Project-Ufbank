@@ -3,9 +3,8 @@
 import React, { useState } from 'react';
 import FormField from '../../molecules/FormField/FormField';
 import Button from '../../atoms/Button/Button';
-import { UserData } from '../../../types/user'; // Import the type for the data structure
+import { UserData } from '../../../types/user';
 
-// Type for the form state
 const initialFormState: UserData = {
   name: '',
   email: '',
@@ -21,12 +20,12 @@ const RegistrationForm: React.FC = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    // Basic mask/format example (for CPF) - this should be more robust
     let formattedValue = value;
+
     if (name === 'cpf') {
       formattedValue = value.replace(/\D/g, '').slice(0, 11);
     }
-    
+
     setFormData((prev) => ({ ...prev, [name]: formattedValue }));
   };
 
@@ -34,55 +33,107 @@ const RegistrationForm: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
-    // --- MOCKED DATA SUBMISSION LOGIC ---
-    console.log('Submitting Data:', formData);
+    console.log('Enviando dados:', formData);
 
-    // Simulate an API call
     setTimeout(() => {
-      console.log('✅ Registration successful (Mocked)');
-      alert(`User registered: ${JSON.stringify(formData, null, 2)}`);
-      setFormData(initialFormState); // Clear form
+      console.log('✅ Cadastro realizado com sucesso');
+      alert(`Usuário cadastrado com sucesso! Bem-vindo ao UFBa-BANK, ${formData.name}!`);
+      setFormData(initialFormState);
       setLoading(false);
     }, 1500);
   };
 
-  // Simple validation check (e.g., enable button only if all fields are non-empty)
   const isFormValid = Object.values(formData).every(value => value.trim() !== '');
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-white rounded-lg shadow-xl max-w-md mx-auto">
-      <h2 className="text-2xl font-bold text-gray-900 text-center">Create Account</h2>
-      
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-5 p-8 bg-[var(--ufba-black)] rounded-2xl border border-[var(--ufba-gray-dark)] max-w-md w-full"
+      style={{ boxShadow: 'var(--shadow-yellow)' }}
+    >
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold text-[var(--ufba-yellow)] mb-2">
+          Criar Conta
+        </h2>
+        <p className="text-sm text-gray-400">
+          Preencha os dados para abrir sua conta no UFBa-BANK
+        </p>
+      </div>
+
       <FormField
-        label="Full Name" id="name" name="name" type="text"
-        value={formData.name} onChange={handleChange} required
+        label="Nome Completo"
+        id="name"
+        name="name"
+        type="text"
+        value={formData.name}
+        onChange={handleChange}
+        required
       />
+
       <FormField
-        label="Email Address" id="email" name="email" type="email"
-        value={formData.email} onChange={handleChange} required
+        label="E-mail"
+        id="email"
+        name="email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange}
+        required
       />
+
       <FormField
-        label="CPF (ID)" id="cpf" name="cpf" type="text"
-        value={formData.cpf} onChange={handleChange} placeholder="e.g., 12345678900" required
+        label="CPF"
+        id="cpf"
+        name="cpf"
+        type="text"
+        value={formData.cpf}
+        onChange={handleChange}
+        placeholder="000.000.000-00"
+        required
       />
+
       <FormField
-        label="Cellphone Number" id="cellphoneNumber" name="cellphoneNumber" type="tel"
-        value={formData.cellphoneNumber} onChange={handleChange} required
+        label="Número de Celular"
+        id="cellphoneNumber"
+        name="cellphoneNumber"
+        type="tel"
+        value={formData.cellphoneNumber}
+        onChange={handleChange}
+        placeholder="(00) 00000-0000"
+        required
       />
+
       <FormField
-        label="Birthday" id="birthday" name="birthday" type="date"
-        value={formData.birthday} onChange={handleChange} required
+        label="Data de Nascimento"
+        id="birthday"
+        name="birthday"
+        type="date"
+        value={formData.birthday}
+        onChange={handleChange}
+        required
       />
+
       <FormField
-        label="Password" id="password" name="password" type="password"
-        value={formData.password} onChange={handleChange} required
+        label="Senha"
+        id="password"
+        name="password"
+        type="password"
+        value={formData.password}
+        onChange={handleChange}
+        required
       />
-      
-      <div>
+
+      <div className="pt-4">
         <Button type="submit" onClick={() => {}} disabled={!isFormValid || loading}>
-          {loading ? 'Registering...' : 'Register'}
+          {loading ? 'Cadastrando...' : 'Criar Conta'}
         </Button>
       </div>
+
+      <p className="text-xs text-center text-gray-500 mt-4">
+        Ao criar uma conta, você concorda com os{' '}
+        <span className="text-[var(--ufba-yellow)] hover:underline cursor-pointer">
+          Termos de Uso
+        </span>
+      </p>
     </form>
   );
 };

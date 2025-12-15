@@ -18,8 +18,18 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white transition duration-150 ease-in-out 
-        ${disabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'}`}
+      className={`w-full flex justify-center py-3 px-6 rounded-lg text-base font-semibold transition-all duration-200 ${
+        disabled
+          ? 'bg-[var(--ufba-gray)] text-gray-500 cursor-not-allowed'
+          : 'bg-[var(--ufba-yellow)] text-black hover:bg-[var(--ufba-yellow-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--ufba-yellow)] focus:ring-offset-2 focus:ring-offset-[var(--ufba-black)]'
+      }`}
+      style={
+        disabled
+          ? {}
+          : {
+              boxShadow: 'var(--shadow-yellow)',
+            }
+      }
     >
       {children}
     </button>

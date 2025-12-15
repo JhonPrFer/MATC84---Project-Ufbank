@@ -1,8 +1,9 @@
-import RegistrationForm from '../../components/organisms/RegistrationForm/RegistrationForm';
+import React from "react"
+import RegistrationForm from "../../components/organisms/RegistrationForm/RegistrationForm"
 
 /**
  * A simple page that uses the RegistrationForm Organism.
- * This acts as the Template and Page level in Atomic Design, 
+ * This acts as the Template and Page level in Atomic Design,
  * providing context and layout for the organism.
  */
 const RegisterPage: React.FC = () => {
@@ -10,7 +11,7 @@ const RegisterPage: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <RegistrationForm />
     </div>
-  );
-};
+  )
+}
 
-export default RegisterPage;
+export default RegisterPage

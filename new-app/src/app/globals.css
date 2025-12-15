@@ -1,22 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* UFBa-BANK Design System - Preto e Amarelo */
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+
+  /* Cores Primárias */
+  --ufba-yellow: #FFD700;
+  --ufba-yellow-dark: #FFC700;
+  --ufba-yellow-light: #FFE55C;
+
+  /* Cores Secundárias */
+  --ufba-black: #000000;
+  --ufba-black-light: #1a1a1a;
+  --ufba-gray-dark: #2a2a2a;
+  --ufba-gray: #3a3a3a;
+
+  /* Estados */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+
+  /* Sombras */
+  --shadow-yellow: 0 10px 40px -15px rgba(255, 215, 0, 0.3);
+  --shadow-yellow-lg: 0 20px 60px -20px rgba(255, 215, 0, 0.4);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--ufba-yellow);
+  --color-primary-dark: var(--ufba-yellow-dark);
+  --color-primary-light: var(--ufba-yellow-light);
+  --color-secondary: var(--ufba-black);
+  --color-secondary-light: var(--ufba-black-light);
+  --color-muted: var(--ufba-gray-dark);
+  --color-accent: var(--ufba-gray);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
