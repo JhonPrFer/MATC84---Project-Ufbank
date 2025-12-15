@@ -50,3 +50,5 @@ logs/
 # Temporary files
 tmp/
 temp/
+
+.playwright-mcp/
