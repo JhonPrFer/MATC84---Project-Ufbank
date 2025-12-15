@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Cadastro de Usuário', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/users/register');
+    await page.goto('/cadastro-usuario');
   });
 
   test('deve exibir formulário de cadastro', async ({ page }) => {

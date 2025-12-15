@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Cadastro de Máquinas de Pagamento', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/payment-machines/register');
+    await page.goto('/cadastro-maquinas');
   });
 
   test('deve exibir formulário de cadastro', async ({ page }) => {
