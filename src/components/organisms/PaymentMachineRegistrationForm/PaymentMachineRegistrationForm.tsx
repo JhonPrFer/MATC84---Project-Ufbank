@@ -67,6 +67,10 @@ const PaymentMachineRegistrationForm: React.FC<PaymentMachineRegistrationFormPro
       } else {
         await new Promise((resolve) => setTimeout(resolve, 1500));
         console.log('Máquina cadastrada (mock):', formData);
+
+        // Salvar no localStorage
+        localStorage.setItem('registeredMachine', JSON.stringify(formData));
+
         alert(`Máquina cadastrada: ${JSON.stringify(formData, null, 2)}`);
       }
 
