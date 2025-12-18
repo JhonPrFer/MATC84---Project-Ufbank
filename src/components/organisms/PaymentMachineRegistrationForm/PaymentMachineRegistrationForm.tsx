@@ -169,24 +169,6 @@ const PaymentMachineRegistrationForm: React.FC<PaymentMachineRegistrationFormPro
         required
       />
 
-      <FormField
-        label="Data de Instalação"
-        id="installationDate"
-        name="installationDate"
-        type="date"
-        value={formData.installationDate}
-        onChange={handleChange}
-      />
-
-      <FormField
-        label="Localização"
-        id="location"
-        name="location"
-        type="text"
-        value={formData.location}
-        onChange={handleChange}
-        placeholder="Ex: Filial Centro"
-      />
 
       <div>
         <Button type="submit" disabled={!isFormValid || loading}>

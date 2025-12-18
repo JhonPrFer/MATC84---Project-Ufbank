@@ -14,6 +14,4 @@ export const INITIAL_FORM_STATE: PaymentMachineData = {
   manufacturer: '',
   status: 'inactive' as MachineStatus,
   transactionFeePercentage: '',
-  installationDate: '',
-  location: '',
 };

@@ -8,16 +8,78 @@ import { UserRegistrationData, UserRegistrationFormProps } from './types';
 
 const INITIAL_STATE: UserRegistrationData = {
   email: '',
+  cpf: '',
   password: '',
   confirmPassword: '',
+};
+
+
+const formatCPF = (value: string): string => {
+  // Remove tudo que não é número
+  const numbers = value.replace(/\D/g, '');
+  
+  // Limita a 11 dígitos e aplica a máscara
+  if (numbers.length <= 11) {
+    return numbers
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d)/, '$1.$2')
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  }
+  
+  // Se passar de 11, corta e formata
+  return numbers.slice(0, 11)
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+};
+
+/**
+ * Função para validar CPF usando o algoritmo oficial
+ */
+const isValidCPF = (cpf: string): boolean => {
+  const numbers = cpf.replace(/\D/g, '');
+  
+  if (numbers.length !== 11) return false;
+  
+  // Verifica se todos os dígitos são iguais (ex: 111.111.111-11)
+  if (/^(\d)\1{10}$/.test(numbers)) return false;
+  
+  // Validação do primeiro dígito verificador
+  let sum = 0;
+  let remainder;
+  
+  for (let i = 1; i <= 9; i++) {
+    sum += parseInt(numbers.substring(i - 1, i)) * (11 - i);
+  }
+  
+  remainder = (sum * 10) % 11;
+  if (remainder === 10 || remainder === 11) remainder = 0;
+  if (remainder !== parseInt(numbers.substring(9, 10))) return false;
+  
+  // Validação do segundo dígito verificador
+  sum = 0;
+  for (let i = 1; i <= 10; i++) {
+    sum += parseInt(numbers.substring(i - 1, i)) * (12 - i);
+  }
+  
+  remainder = (sum * 10) % 11;
+  if (remainder === 10 || remainder === 11) remainder = 0;
+  if (remainder !== parseInt(numbers.substring(10, 11))) return false;
+  
+  return true;
 };
 
 const validateForm = (data: UserRegistrationData): string | null => {
   if (!data.email.trim()) return 'Email é obrigatório';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return 'Formato de email inválido';
+  
+  if (!data.cpf.trim()) return 'CPF é obrigatório';
+  if (!isValidCPF(data.cpf)) return 'CPF inválido';
+  
   if (!data.password) return 'Senha é obrigatória';
   if (data.password.length < 6) return 'Senha deve ter no mínimo 6 caracteres';
   if (data.password !== data.confirmPassword) return 'As senhas não coincidem';
+  
   return null;
 };
 
@@ -40,6 +102,12 @@ const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({
     setError(null);
   };
 
+  const handleCPFChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatCPF(e.target.value);
+    setFormData((prev) => ({ ...prev, cpf: formatted }));
+    setError(null);
+  };
+
   const handleReset = () => {
     setFormData(INITIAL_STATE);
     setError(null);
@@ -51,7 +119,7 @@ const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({
     logger.info('User registration started', {
       component: 'UserRegistrationForm',
       action: 'handleSubmit',
-      metadata: { email: formData.email },
+      metadata: { email: formData.email, cpf: formData.cpf },
     });
 
     const validationError = validateForm(formData);
@@ -73,14 +141,17 @@ const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({
         await onSubmit(formData);
       } else {
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log('Usuário cadastrado (mock):', { email: formData.email });
-        alert(`Usuário cadastrado: ${formData.email}`);
+        console.log('Usuário cadastrado (mock):', { 
+          email: formData.email, 
+          cpf: formData.cpf 
+        });
+        alert(`Usuário cadastrado: ${formData.email}\nCPF: ${formData.cpf}`);
       }
 
       logger.info('User registration succeeded', {
         component: 'UserRegistrationForm',
         action: 'handleSubmit',
-        metadata: { email: formData.email },
+        metadata: { email: formData.email, cpf: formData.cpf },
       });
 
       setFormData(INITIAL_STATE);
@@ -99,6 +170,7 @@ const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({
 
   const isFormValid =
     formData.email.trim() !== '' &&
+    formData.cpf.trim() !== '' &&
     formData.password.trim() !== '' &&
     formData.confirmPassword.trim() !== '';
 
@@ -125,6 +197,17 @@ const UserRegistrationForm: React.FC<UserRegistrationFormProps> = ({
         value={formData.email}
         onChange={handleChange}
         placeholder="usuario@exemplo.com"
+        required
+      />
+
+      <FormField
+        label="CPF"
+        id="cpf"
+        name="cpf"
+        type="text"
+        value={formData.cpf}
+        onChange={handleCPFChange}
+        placeholder="000.000.000-00"
         required
       />
 

@@ -6,8 +6,6 @@ export interface PaymentMachineData {
   manufacturer: string;
   status: MachineStatus;
   transactionFeePercentage: string;
-  installationDate: string;
-  location: string;
 }
 
 export interface PaymentMachineRegistrationFormProps {
